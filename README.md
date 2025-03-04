@@ -1,2 +1,3 @@
-# grow101
-a simple project for learn and grow
+# Grow 101
+
+a simple project for learn and grow.
