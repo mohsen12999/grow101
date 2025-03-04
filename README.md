@@ -39,3 +39,15 @@ not (True && True)  --False
 5 /= 4              --True  
 "hello" == "hello"  --True  
 ```
+
+## functions
+
+- function_name arg1 arg2 ,...
+
+```hs
+succ 8       --9 (increase one number. equal to ++ in c )
+min 9 10     --9
+max 100 101  --101
+succ 9 + max 5 4 + 1      --16
+(succ 9) + (max 5 4) + 1  --16
+```
