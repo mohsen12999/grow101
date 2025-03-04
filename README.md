@@ -69,3 +69,11 @@ doubleUs 28 88 + doubleMe 123  --478
 
 doubleUs x y = doubleMe x + doubleMe y
 ```
+
+```hs
+doubleSmallNumber x = if x > 100  
+                        then x  
+                        else x*2
+
+doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
+```
