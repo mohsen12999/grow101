@@ -2,6 +2,8 @@
 
 a simple project for learn and grow.
 
+start learning Haskell from [learn you a haskell](https://learnyouahaskell.github.io/).
+
 ## Commands
 
 - `ghcup`: package manager
