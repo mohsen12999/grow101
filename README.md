@@ -21,3 +21,21 @@ start learning Haskell from [learn you a haskell](https://learnyouahaskell.githu
 1892 - 1472  
 5 / 2  
 ```
+
+## logic
+
+```hs
+True && False       --False  
+True && True        --True  
+False || True       --True  
+not False           --True  
+not (True && True)  --False  
+```
+
+```hs
+5 == 5              --True  
+1 == 0              --False  
+5 /= 5              --False  
+5 /= 4              --True  
+"hello" == "hello"  --True  
+```
