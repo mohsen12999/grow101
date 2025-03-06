@@ -341,3 +341,56 @@ rightTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 =
 rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]  
 rightTriangles'  --[(6,8,10)]
 ```
+
+## Type
+
+```hs
+:t 'a'          --'a' :: Char  
+:t True         --True :: Bool  
+:t "HELLO!"     --"HELLO!" :: [Char]  
+:t (True, 'a')  --(True, 'a') :: (Bool, Char)  
+:t 4 == 5       --4 == 5 :: Bool 
+```
+
+```hs
+removeNonUppercase :: [Char] -> [Char]  
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]  
+```
+
+```hs
+addThree :: Int -> Int -> Int -> Int  
+addThree x y z = x + y + z  
+```
+
+- `Int` stands for integer. `Int` is bounded, which means that it has a minimum and a maximum value. Usually on 32-bit machines the maximum possible Int is 2147483647 and the minimum is -2147483648.
+
+- `Integer` for bounded integer number.
+
+```hs
+factorial :: Integer -> Integer  
+factorial n = product [1..n]
+
+factorial 50  --30414093201713378043612608166064768844377641568960512000000000000  
+```
+
+- `Float` is a real floating point with single precision.
+
+```hs
+circumference :: Float -> Float  
+circumference r = 2 * pi * r  
+
+circumference 4.0  --25.132742
+```
+
+- `Double` is a real floating point with double the precision!
+
+```hs
+circumference' :: Double -> Double  
+circumference' r = 2 * pi * r
+
+circumference' 4.0  --25.132741228718345
+```
+
+- `Bool` is a boolean type. It can have only two values: True and False.
+
+- `Char` represents a character. It's denoted by single quotes. A list of characters is a string.
