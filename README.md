@@ -22,6 +22,11 @@ start learning Haskell from [learn you a haskell](https://learnyouahaskell.githu
 5 / 2  
 ```
 
+```hs
+mod 10 5  --4
+10 `mod` 5 --4
+```
+
 ## Types
 
 - `Bool`
