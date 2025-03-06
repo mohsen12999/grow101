@@ -303,3 +303,41 @@ removeNonUppercase "IdontLIKEFROGS"   --"ILIKEFROGS"
 let xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]  
 [ [ x | x <- xs, even x ] | xs <- xxs]  --[[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]  
 ```
+
+## Tuples
+
+- define with ()
+
+- `fst` takes a pair and returns its first component.
+
+```hs
+fst (8,11)          --8  
+fst ("Wow", False)  --"Wow"
+```
+
+- `snd` takes a pair and returns its second component.
+
+```hs
+snd (8,11)          --11  
+snd ("Wow", False)  --False  
+```
+
+- `zip` It takes two lists and then zips them together into one list by joining the matching elements into pairs.
+
+```hs
+zip [1,2,3,4,5] [5,5,5,5,5]  --[(1,5),(2,5),(3,5),(4,5),(5,5)]  
+zip [1 .. 5] ["one", "two", "three", "four", "five"]  --[(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")] 
+
+zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]  --[(5,"im"),(3,"a"),(2,"turtle")] 
+
+zip [1..] ["apple", "orange", "cherry", "mango"]  --[(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]  
+```
+
+```hs
+triangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ]
+
+rightTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2]
+
+rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]  
+rightTriangles'  --[(6,8,10)]
+```
