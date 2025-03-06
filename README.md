@@ -226,3 +226,28 @@ define special series
 ```hs
 [0.1, 0.3 .. 1]  --[0.1,0.3,0.5,0.7,0.8999999999999999,1.0999999999999999]  
 ```
+
+### Define Infinite Range
+
+```hs
+[13,26..]
+```
+
+- `cycle` takes a list and cycles it into an infinite list.
+
+```hs
+take 10 (cycle [1,2,3])  --[1,2,3,1,2,3,1,2,3,1]  
+take 12 (cycle "LOL ")   --"LOL LOL LOL "   
+```
+
+- `repeat` takes an element and produces an infinite list of just that element. It's like cycling a list with only one element.
+
+```hs
+take 10 (repeat 5)  --[5,5,5,5,5,5,5,5,5,5]
+```
+
+- `replicate` function if you want some number of the same element in a list.
+
+```hs
+replicate 3 10 --[10,10,10]
+```
