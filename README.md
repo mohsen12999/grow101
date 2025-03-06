@@ -22,6 +22,16 @@ start learning Haskell from [learn you a haskell](https://learnyouahaskell.githu
 5 / 2  
 ```
 
+## Types
+
+- `Bool`
+- `Int`: limited integer
+- `Integer`
+- `Float`
+- `Double`
+- `Char`
+- `[Char]`: unlimited string
+
 ## logic
 
 ```hs
