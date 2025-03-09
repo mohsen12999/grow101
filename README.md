@@ -346,3 +346,152 @@ rightTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 =
 rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]  
 rightTriangles'  --[(6,8,10)]
 ```
+
+## Type
+
+```hs
+:t 'a'          --'a' :: Char  
+:t True         --True :: Bool  
+:t "HELLO!"     --"HELLO!" :: [Char]  
+:t (True, 'a')  --(True, 'a') :: (Bool, Char)  
+:t 4 == 5       --4 == 5 :: Bool 
+```
+
+```hs
+removeNonUppercase :: [Char] -> [Char]  
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]  
+```
+
+```hs
+addThree :: Int -> Int -> Int -> Int  
+addThree x y z = x + y + z  
+```
+
+- `Int` stands for integer. `Int` is bounded, which means that it has a minimum and a maximum value. Usually on 32-bit machines the maximum possible Int is 2147483647 and the minimum is -2147483648.
+
+- `Integer` for bounded integer number.
+
+```hs
+factorial :: Integer -> Integer  
+factorial n = product [1..n]
+
+factorial 50  --30414093201713378043612608166064768844377641568960512000000000000  
+```
+
+- `Float` is a real floating point with single precision.
+
+```hs
+circumference :: Float -> Float  
+circumference r = 2 * pi * r  
+
+circumference 4.0  --25.132742
+```
+
+- `Double` is a real floating point with double the precision!
+
+```hs
+circumference' :: Double -> Double  
+circumference' r = 2 * pi * r
+
+circumference' 4.0  --25.132741228718345
+```
+
+- `Bool` is a boolean type. It can have only two values: True and False.
+
+- `Char` represents a character. It's denoted by single quotes. A list of characters is a string.
+
+## TypeClass
+
+- `Eq` is used for types that support equality testing.
+
+```hs
+5 == 5  --True  
+5 /= 5  --False  
+
+'a' == 'a'          --True  
+"Ho Ho" == "Ho Ho"  --True  
+3.432 == 3.432      --True  
+```
+
+- `Ord` is for types that have an ordering.
+- `Ordering` is a type that can be GT, LT or EQ, meaning greater than, lesser than and equal,
+
+```hs
+:t (>)  -- (>) :: (Ord a) => a -> a -> Bool  
+
+"Abrakadabra" < "Zebra"         --True  
+"Abrakadabra" `compare` "Zebra"  --LT  
+5 >= 2         --True  
+5 `compare` 3  --GT  
+```
+
+- `Show` the member can be presented as strings.
+
+```hs
+show 3      --"3"  
+show 5.334  --"5.334"  
+show True   --"True"
+```
+
+- `Read` is sort of the opposite typeclass of Show.
+
+```hs
+read "True" || False     --True  
+read "8.2" + 3.8         --12.0  
+read "5" - 2             --3  
+read "[1,2,3,4]" ++ [3]  --[1,2,3,4,3]
+```
+
+```hs
+read "4" --make error. need type
+```
+
+```hs
+:t read  --read :: (Read a) => String -> a  
+```
+
+```hs
+read "5" :: Int    --5  
+read "5" :: Float  --5.0  
+(read "5" :: Float) * 4  --20.0  
+read "[1,2,3,4]" :: [Int]  --[1,2,3,4]  
+read "(3, 'a')" :: (Int, Char)  --(3, 'a')  
+```
+
+- `Enum` members are sequentially ordered types — they can be enumerated.
+
+```hs
+['a'..'e']  --"abcde"  
+[LT .. GT]  --[LT,EQ,GT]  
+[3 .. 5]    --[3,4,5]  
+succ 'B'    --'C' 
+```
+
+- `Bounded` members have an upper and a lower bound.
+
+```hs
+minBound :: Int   -- -2147483648  
+maxBound :: Char  --'\1114111'  
+maxBound :: Bool  --True  
+minBound :: Bool  --False
+
+:t minBound --(Bounded a) => a
+
+maxBound :: (Bool, Int, Char)  --(True,2147483647,'\1114111')  
+```
+
+- `Num` is a numeric typeclass.
+
+```hs
+:t 20  --20 :: (Num t) => t  
+
+20 :: Int      --20  
+20 :: Integer  --20  
+20 :: Float    --20.0  
+20 :: Double   --20.0 
+
+:t (*)  --(*) :: (Num a) => a -> a -> a  
+```
+
+- `Integral` is also a numeric typeclass for `Int` and `Integer`.
+- `Floating` includes only floating point numbers, so `Float` and `Double`.
