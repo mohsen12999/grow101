@@ -394,3 +394,99 @@ circumference' 4.0  --25.132741228718345
 - `Bool` is a boolean type. It can have only two values: True and False.
 
 - `Char` represents a character. It's denoted by single quotes. A list of characters is a string.
+
+## TypeClass
+
+- `Eq` is used for types that support equality testing.
+
+```hs
+5 == 5  --True  
+5 /= 5  --False  
+
+'a' == 'a'          --True  
+"Ho Ho" == "Ho Ho"  --True  
+3.432 == 3.432      --True  
+```
+
+- `Ord` is for types that have an ordering.
+- `Ordering` is a type that can be GT, LT or EQ, meaning greater than, lesser than and equal,
+
+```hs
+:t (>)  -- (>) :: (Ord a) => a -> a -> Bool  
+
+"Abrakadabra" < "Zebra"         --True  
+"Abrakadabra" `compare` "Zebra"  --LT  
+5 >= 2         --True  
+5 `compare` 3  --GT  
+```
+
+- `Show` the member can be presented as strings.
+
+```hs
+show 3      --"3"  
+show 5.334  --"5.334"  
+show True   --"True"
+```
+
+- `Read` is sort of the opposite typeclass of Show.
+
+```hs
+read "True" || False     --True  
+read "8.2" + 3.8         --12.0  
+read "5" - 2             --3  
+read "[1,2,3,4]" ++ [3]  --[1,2,3,4,3]
+```
+
+```hs
+read "4" --make error. need type
+```
+
+```hs
+:t read  --read :: (Read a) => String -> a  
+```
+
+```hs
+read "5" :: Int    --5  
+read "5" :: Float  --5.0  
+(read "5" :: Float) * 4  --20.0  
+read "[1,2,3,4]" :: [Int]  --[1,2,3,4]  
+read "(3, 'a')" :: (Int, Char)  --(3, 'a')  
+```
+
+- `Enum` members are sequentially ordered types — they can be enumerated.
+
+```hs
+['a'..'e']  --"abcde"  
+[LT .. GT]  --[LT,EQ,GT]  
+[3 .. 5]    --[3,4,5]  
+succ 'B'    --'C' 
+```
+
+- `Bounded` members have an upper and a lower bound.
+
+```hs
+minBound :: Int   -- -2147483648  
+maxBound :: Char  --'\1114111'  
+maxBound :: Bool  --True  
+minBound :: Bool  --False
+
+:t minBound --(Bounded a) => a
+
+maxBound :: (Bool, Int, Char)  --(True,2147483647,'\1114111')  
+```
+
+- `Num` is a numeric typeclass.
+
+```hs
+:t 20  --20 :: (Num t) => t  
+
+20 :: Int      --20  
+20 :: Integer  --20  
+20 :: Float    --20.0  
+20 :: Double   --20.0 
+
+:t (*)  --(*) :: (Num a) => a -> a -> a  
+```
+
+- `Integral` is also a numeric typeclass for `Int` and `Integer`.
+- `Floating` includes only floating point numbers, so `Float` and `Double`.
